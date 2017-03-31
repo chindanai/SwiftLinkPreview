@@ -45,10 +45,14 @@ extension String {
         ]
         
         do {
-            
-            let attributedString = try NSAttributedString(data: encodedData, options: attributedOptions, documentAttributes: nil)
-            
-            return attributedString.string
+            let version = (UIDevice.current.systemVersion as NSString).doubleValue
+            if (version >= 9.0) {
+                let attributedString = try NSAttributedString(data: encodedData, options: attributedOptions, documentAttributes: nil)
+                
+                return attributedString.string
+            } else {
+                return String.init(data: encodedData, encoding: .utf8)!
+            }
             
         } catch _ {
             
