@@ -209,7 +209,7 @@ extension SwiftLinkPreview {
 
         var task: URLSessionDataTask? = nil
         var request = URLRequest(url: url)
-        request.httpMethod = "HEAD"
+        request.httpMethod = "GET"
 
         task = session.dataTask(with: request, completionHandler: { data, response, error in
             if let _ = error {
